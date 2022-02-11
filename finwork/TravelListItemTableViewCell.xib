@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="172" id="KGk-i7-Jjw" customClass="TravelListItemTableViewCell" customModule="finwork" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="172"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aF8-QO-ESN" customClass="CardView" customModule="finwork" customModuleProvider="target">
+                        <rect key="frame" x="15" y="8" width="384" height="156"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="847767" translatesAutoresizingMaskIntoConstraints="NO" id="Z6r-7I-uYn" customClass="ImageView" customModule="finwork" customModuleProvider="target">
+                                <rect key="frame" x="224" y="0.0" width="160" height="156"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="田所浩二" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSk-GL-Flk">
+                                <rect key="frame" x="68" y="22" width="148" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.46274509800000002" green="0.36470588240000001" blue="0.41176470590000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="台北直直撞" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrJ-VM-OXr">
+                                <rect key="frame" x="24" y="59" width="111.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.92941176469999998" green="0.46274509800000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="5人" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DpN-k7-3pu">
+                                <rect key="frame" x="139.5" y="59" width="26" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.92941176469999998" green="0.46274509800000002" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="8/17 21:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVM-mh-Q72">
+                                <rect key="frame" x="38" y="93.5" width="91" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="台北市" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRf-Yj-h2x">
+                                <rect key="frame" x="137" y="93.5" width="37" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.99607843139999996" green="0.6588235294" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2-5" translatesAutoresizingMaskIntoConstraints="NO" id="yGF-fL-leI">
+                                <rect key="frame" x="24" y="12" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="L9F-7R-GZP"/>
+                                    <constraint firstAttribute="width" constant="40" id="QFU-jf-cTW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VoC-Bk-Yye">
+                                <rect key="frame" x="24" y="122" width="176" height="20"/>
+                                <color key="backgroundColor" name="旅蚯黃"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="hol-ly-EGE"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="C2g-lO-4vx">
+                                    <size key="itemSize" width="52" height="20"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" name="旅蚯黃"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Z6r-7I-uYn" secondAttribute="bottom" id="2TG-Wq-ZGF"/>
+                            <constraint firstItem="dRf-Yj-h2x" firstAttribute="top" secondItem="QrJ-VM-OXr" secondAttribute="bottom" constant="8" id="2TK-A2-V0n"/>
+                            <constraint firstItem="DpN-k7-3pu" firstAttribute="leading" secondItem="QrJ-VM-OXr" secondAttribute="trailing" constant="4" id="3rV-0S-5Ai"/>
+                            <constraint firstItem="gVM-mh-Q72" firstAttribute="top" secondItem="QrJ-VM-OXr" secondAttribute="bottom" constant="8" id="6DG-z3-56D"/>
+                            <constraint firstItem="VoC-Bk-Yye" firstAttribute="leading" secondItem="aF8-QO-ESN" secondAttribute="leading" constant="24" id="6da-Vv-Tyf"/>
+                            <constraint firstAttribute="trailing" secondItem="Z6r-7I-uYn" secondAttribute="trailing" id="CSR-af-Bb9"/>
+                            <constraint firstItem="QrJ-VM-OXr" firstAttribute="leading" secondItem="aF8-QO-ESN" secondAttribute="leading" constant="24" id="MCH-IC-hch"/>
+                            <constraint firstItem="Z6r-7I-uYn" firstAttribute="leading" secondItem="VoC-Bk-Yye" secondAttribute="trailing" constant="24" id="ZMn-Pt-Cr7"/>
+                            <constraint firstItem="gVM-mh-Q72" firstAttribute="leading" secondItem="aF8-QO-ESN" secondAttribute="leading" constant="38" id="ZN8-rq-w1U"/>
+                            <constraint firstItem="Z6r-7I-uYn" firstAttribute="leading" secondItem="aF8-QO-ESN" secondAttribute="leading" constant="224" id="aDc-tS-DYz"/>
+                            <constraint firstItem="DpN-k7-3pu" firstAttribute="top" secondItem="QrJ-VM-OXr" secondAttribute="top" id="bcK-A2-ZEP"/>
+                            <constraint firstItem="dRf-Yj-h2x" firstAttribute="leading" secondItem="gVM-mh-Q72" secondAttribute="trailing" constant="8" id="cZk-CY-5x0"/>
+                            <constraint firstItem="Z6r-7I-uYn" firstAttribute="leading" secondItem="bSk-GL-Flk" secondAttribute="trailing" constant="8" id="gEA-ny-ycM"/>
+                            <constraint firstItem="bSk-GL-Flk" firstAttribute="leading" secondItem="yGF-fL-leI" secondAttribute="trailing" constant="4" id="hv9-Tm-q40"/>
+                            <constraint firstAttribute="bottom" secondItem="VoC-Bk-Yye" secondAttribute="bottom" constant="14" id="j9K-do-EZh"/>
+                            <constraint firstItem="VoC-Bk-Yye" firstAttribute="top" secondItem="gVM-mh-Q72" secondAttribute="bottom" constant="14" id="lDp-xD-wMA"/>
+                            <constraint firstItem="QrJ-VM-OXr" firstAttribute="top" secondItem="yGF-fL-leI" secondAttribute="bottom" constant="7" id="m4R-8Q-Foc"/>
+                            <constraint firstItem="DpN-k7-3pu" firstAttribute="bottom" secondItem="QrJ-VM-OXr" secondAttribute="bottom" id="qBr-YX-NRv"/>
+                            <constraint firstItem="yGF-fL-leI" firstAttribute="leading" secondItem="aF8-QO-ESN" secondAttribute="leading" constant="24" id="qvy-cb-zIf"/>
+                            <constraint firstItem="bSk-GL-Flk" firstAttribute="top" secondItem="aF8-QO-ESN" secondAttribute="top" constant="22" id="roO-yS-yc8"/>
+                            <constraint firstItem="Z6r-7I-uYn" firstAttribute="leading" secondItem="dRf-Yj-h2x" secondAttribute="trailing" constant="50" id="uoY-27-rcC"/>
+                            <constraint firstItem="dRf-Yj-h2x" firstAttribute="bottom" secondItem="gVM-mh-Q72" secondAttribute="bottom" id="zSM-kf-GGC"/>
+                            <constraint firstItem="Z6r-7I-uYn" firstAttribute="top" secondItem="aF8-QO-ESN" secondAttribute="top" id="zlK-V6-o2H"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <constraints>
+                <constraint firstItem="aF8-QO-ESN" firstAttribute="top" secondItem="njF-e1-oar" secondAttribute="top" constant="8" id="TCM-Hk-ZAh"/>
+                <constraint firstItem="aF8-QO-ESN" firstAttribute="leading" secondItem="njF-e1-oar" secondAttribute="leading" constant="15" id="VMN-3y-T7h"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="aF8-QO-ESN" secondAttribute="trailing" constant="15" id="c8N-8B-Se7"/>
+                <constraint firstItem="njF-e1-oar" firstAttribute="bottom" secondItem="aF8-QO-ESN" secondAttribute="bottom" constant="8" id="dH7-3E-ZH9"/>
+            </constraints>
+            <connections>
+                <outlet property="menber" destination="DpN-k7-3pu" id="1GR-cN-NAP"/>
+                <outlet property="placetext" destination="dRf-Yj-h2x" id="RNl-J3-Vkh"/>
+                <outlet property="start_timetext" destination="gVM-mh-Q72" id="GUx-Mw-Bwt"/>
+                <outlet property="tag_collection" destination="VoC-Bk-Yye" id="tQo-Wy-qOl"/>
+                <outlet property="titletext" destination="QrJ-VM-OXr" id="v1N-CK-lx2"/>
+                <outlet property="travelimage" destination="Z6r-7I-uYn" id="E3w-uB-n0h"/>
+                <outlet property="userimage" destination="yGF-fL-leI" id="bmn-1K-DT3"/>
+                <outlet property="username" destination="bSk-GL-Flk" id="nE8-KX-TDm"/>
+            </connections>
+            <point key="canvasLocation" x="713.04347826086962" y="245.08928571428569"/>
+        </tableViewCell>
+    </objects>
+    <designables>
+        <designable name="Z6r-7I-uYn">
+            <size key="intrinsicContentSize" width="1081" height="402"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="2-5" width="640" height="360"/>
+        <image name="847767" width="1081" height="402"/>
+        <namedColor name="旅蚯黃">
+            <color red="1" green="0.98000001907348633" blue="0.90200001001358032" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>

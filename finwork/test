@@ -1,0 +1,218 @@
+
+
+
+        //-------------------------------------------------------------------
+        //def_introduction_gradient
+        let def_introduction_gradient = CAGradientLayer()
+        def_introduction_gradient.type = .axial
+        def_introduction_gradient.frame = CGRect(x: introduction.bounds.minX - 3, y: introduction.bounds.minY, width: introduction.frame.size.width + 3, height: introduction.frame.size.height + 3)
+        def_introduction_gradient.colors = [colory.cgColor,colory.cgColor]//漸層
+        def_introduction_gradient.locations = [0.0,0.45]
+        def_introduction_gradient.cornerRadius = 10
+        def_introduction_gradient.maskedCorners = .layerMaxXMinYCorner
+        
+        //-------------------------------------------------------------------
+        //introduction_shape
+        let introduction_shape = CAShapeLayer()
+        introduction_shape.lineWidth = 3
+        introduction_shape.path = UIBezierPath(roundedRect: self.introduction.bounds,cornerRadius: def_introduction_gradient.cornerRadius).cgPath
+        //設一個更大的按鈕筐
+        introduction_shape.strokeColor = colorgg.cgColor
+        introduction_shape.maskedCorners = .layerMaxXMinYCorner
+        introduction_shape.fillColor = UIColor.clear.cgColor
+        def_introduction_gradient.mask = introduction_shape
+        
+        //-------------------------------------------------------------------
+        //introduction_layer1
+        let introduction_layer1 = CALayer()
+        introduction_layer1.frame = CGRect(x: introduction.bounds.minX , y: introduction.bounds.maxY - 10, width: introduction.frame.size.width , height: 20)
+        introduction_layer1.backgroundColor = colory.cgColor
+        
+        //-------------------------------------------------------------------
+        //introduction_lineView
+        let introduction_lineView = UIView(frame: CGRect(x: introduction.bounds.minX - 10, y: introduction.bounds.minY - 1 , width: introduction.frame.size.width , height: 3)) //bottom
+        introduction_lineView.backgroundColor = colorgg
+        
+        //-------------------------------------------------------------------
+        //def_introduction_gradient2
+        let def_introduction_gradient2 = CAGradientLayer()
+        def_introduction_gradient2.type = .axial
+        def_introduction_gradient2.frame = CGRect(x: introduction.bounds.minX, y: introduction.bounds.minY, width: 10, height: introduction.frame.size.height)
+        def_introduction_gradient2.colors = [colory.cgColor,colory.cgColor]
+        def_introduction_gradient2.locations = [0.0,0.45]
+        
+        //-------------------------------------------------------------------
+        //onclick_introduction_gradient2
+        let onclick_introduction_gradient2 = CAGradientLayer()
+        onclick_introduction_gradient2.type = .axial
+        onclick_introduction_gradient2.frame = CGRect(x: introduction.bounds.minX, y: introduction.bounds.minY, width: 10, height: introduction.frame.size.height)
+        onclick_introduction_gradient2.colors = [colory.cgColor,colory.cgColor]
+        onclick_introduction_gradient2.locations = [0.0,0.45]
+        
+        
+        //-------------------------------------------------------------------
+        //introduction_lineView2
+        let introduction_lineView2 = UIView(frame: CGRect(x: introduction.bounds.maxX - 1.5, y: introduction.bounds.minY + 10, width: 3, height: introduction.frame.size.height - 10)) //left
+        introduction_lineView2.backgroundColor = colorgg
+        
+        //-------------------------------------------------------------------
+        //def_introduction_lineView3
+        let def_introduction_lineView3 = UIView(frame: CGRect(x: introduction.bounds.minX , y: introduction.bounds.maxY - 3 , width: introduction.frame.size.width , height: 3)) //bottom
+        def_introduction_lineView3.backgroundColor = colorgg
+        
+        //-------------------------------------------------------------------
+        //onclick_introduction_gradient
+        let onclick_introduction_gradient = CAGradientLayer()
+        onclick_introduction_gradient.type = .axial
+        onclick_introduction_gradient.frame = CGRect(x: introduction.bounds.minX - 3, y: introduction.bounds.minY, width: introduction.frame.size.width + 3, height: introduction.frame.size.height + 3)
+        onclick_introduction_gradient.colors = [colorgy.cgColor, colory.cgColor]//漸層
+        onclick_introduction_gradient.locations = [0.0,0.45]
+        onclick_introduction_gradient.cornerRadius = 10
+        onclick_introduction_gradient.maskedCorners = .layerMaxXMinYCorner
+        
+        
+        //-------------------------------------------------------------------
+        //def
+        /*
+ 
+        self.introduction.layer.addSublayer(def_introduction_gradient)
+        self.introduction.layer.addSublayer(introduction_shape)
+        
+        self.introduction.layer.addSublayer(introduction_layer1)
+        
+        self.introduction.layer.addSublayer(def_introduction_gradient2)
+        self.introduction.addSubview(introduction_lineView)
+        introduction.addSubview(introduction_lineView2)
+        introduction.addSubview(def_introduction_lineView3)
+         */
+        
+        //-------------------------------------------------------------------
+        //onclick
+        /*
+        
+        self.introduction.layer.addSublayer(onclick_introduction_gradient)
+        self.introduction.layer.addSublayer(introduction_shape)
+        
+        self.introduction.layer.addSublayer(introduction_layer1)
+        
+        self.introduction.layer.addSublayer(onclick_introduction_gradient2)
+        self.introduction.addSubview(introduction_lineView)
+        introduction.addSubview(introduction_lineView2)
+        
+         */
+
+        //-------------------------------------------------------------------
+        //def_qabtn_gradient
+        let def_qabtn_gradient = CAGradientLayer()
+        def_qabtn_gradient.type = .axial
+        def_qabtn_gradient.frame = CGRect(x: qabtn.bounds.minX + 3, y: qabtn.bounds.minY, width: qabtn.frame.size.width + 20, height: qabtn.frame.size.height + 3)
+        def_qabtn_gradient.colors = [colory.cgColor,colory.cgColor]//漸層
+        //qabtn_gradient.colors = [colorgg.cgColor, colory.cgColor]
+        def_qabtn_gradient.locations = [0.0,0.75]
+        def_qabtn_gradient.cornerRadius = 10
+        def_qabtn_gradient.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        
+        //-------------------------------------------------------------------
+        //qabtn_shape
+        let qabtn_shape = CAShapeLayer()
+        qabtn_shape.lineWidth = 3
+        qabtn_shape.path = UIBezierPath(roundedRect: self.qabtn.bounds,cornerRadius: def_qabtn_gradient.cornerRadius).cgPath
+        //設一個更大的按鈕筐
+        qabtn_shape.strokeColor = colorgg.cgColor
+        //shape.cornerRadius = 10
+        qabtn_shape.maskedCorners = .layerMaxXMinYCorner
+        qabtn_shape.fillColor = UIColor.clear.cgColor
+        def_qabtn_gradient.mask = qabtn_shape
+        
+        //-------------------------------------------------------------------
+        //qabtn_layer
+        let qabtn_layer = CALayer()
+        qabtn_layer.frame = CGRect(x: qabtn.bounds.minX + 1.5 , y: qabtn.bounds.maxY - 10, width: qabtn.frame.size.width - 1, height: 20)
+        qabtn_layer.backgroundColor = colory.cgColor
+        //-------------------------------------------------------------------
+        //qabtn_lineView
+        let qabtn_lineView = UIView(frame: CGRect(x: qabtn.bounds.minX , y: qabtn.bounds.maxY - 3 , width: qabtn.frame.size.width , height: 3)) //bottom
+        qabtn_lineView.backgroundColor = colorgg
+        
+        //-------------------------------------------------------------------
+        //qabtn_lineView2
+        let qabtn_lineView2 = UIView(frame: CGRect(x: qabtn.bounds.maxX - 1.5, y: qabtn.bounds.minY + 10, width: 3, height: qabtn.frame.size.height - 10)) //left
+        qabtn_lineView2.backgroundColor = colorgg
+        
+        //-------------------------------------------------------------------
+        //onclick_qabtn_gradient
+        let onclick_qabtn_gradient = CAGradientLayer()//漸層
+        onclick_qabtn_gradient.type = .axial
+        onclick_qabtn_gradient.frame = CGRect(x: qabtn.bounds.minX + 3, y: qabtn.bounds.minY, width: qabtn.frame.size.width + 20, height: qabtn.frame.size.height + 3)
+        onclick_qabtn_gradient.colors = [colorgy.cgColor, colory.cgColor]
+        onclick_qabtn_gradient.locations = [0.0,0.75]
+        onclick_qabtn_gradient.cornerRadius = 10
+        onclick_qabtn_gradient.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+        
+        //-------------------------------------------------------------------
+        //def
+        /*
+         self.qabtn.layer.addSublayer(def_qabtn_gradient)
+         self.qabtn.layer.addSublayer(qabtn_shape)
+         self.qabtn.layer.addSublayer(qabtn_layer)
+         self.qabtn.addSubview(qabtn_lineView)
+         self.qabtn.addSubview(qabtn_lineView2)*/
+        //-------------------------------------------------------------------
+        //onclick
+        /*
+         
+         
+         self.qabtn.layer.addSublayer(onclick_qabtn_gradient)
+         self.qabtn.layer.addSublayerqabtn_shape
+         self.qabtn.layer.addSublayer(qabtn_layer)
+         self.qabtn.addSubview(qabtn_lineView2)
+         
+         */
+        
+        //-------------------------------------------------------------------
+        
+        func def_introductionbtncustom( ) {
+            onclick_introduction_gradient.removeFromSuperlayer()
+            self.introduction.layer.addSublayer(def_introduction_gradient)
+            self.introduction.layer.addSublayer(introduction_shape)
+            
+            self.introduction.layer.addSublayer(introduction_layer1)
+            
+            self.introduction.layer.addSublayer(def_introduction_gradient2)
+            self.introduction.addSubview(introduction_lineView)
+            introduction.addSubview(introduction_lineView2)
+            introduction.addSubview(def_introduction_lineView3)
+        }
+        
+        func onclick_introductionbtncustom() {
+            self.introduction.layer.addSublayer(onclick_introduction_gradient)
+            self.introduction.layer.addSublayer(introduction_shape)
+            
+            self.introduction.layer.addSublayer(introduction_layer1)
+            
+            self.introduction.layer.addSublayer(onclick_introduction_gradient2)
+            self.introduction.addSubview(introduction_lineView)
+            introduction.addSubview(introduction_lineView2)
+        }
+        
+        func def_qabtncustom() {
+            self.qabtn.layer.addSublayer(def_qabtn_gradient)
+            self.qabtn.layer.addSublayer(qabtn_shape)
+            self.qabtn.layer.addSublayer(qabtn_layer)
+            self.qabtn.addSubview(qabtn_lineView)
+            self.qabtn.addSubview(qabtn_lineView2)
+            
+        }
+        
+        func onclick_qabtncustom() {
+            self.qabtn.layer.addSublayer(onclick_qabtn_gradient)
+            self.qabtn.layer.addSublayer(qabtn_shape)
+            self.qabtn.layer.addSublayer(qabtn_layer)
+            self.qabtn.addSubview(qabtn_lineView2)
+            
+        }
+        //-------------------------------------------------------------------
+
+
+

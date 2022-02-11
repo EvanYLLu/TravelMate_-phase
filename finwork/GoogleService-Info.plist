@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>978340723728-2142ihi1pm6cd465p9b3rpi2iiu6fep6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.978340723728-2142ihi1pm6cd465p9b3rpi2iiu6fep6</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCd2xHgAJWZvMpKY15Atp6gG56E7gurhQM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>978340723728</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>evanqq.finwork</string>
+	<key>PROJECT_ID</key>
+	<string>soupcustomdba</string>
+	<key>STORAGE_BUCKET</key>
+	<string>soupcustomdba.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:978340723728:ios:a6727b74d767cdd7279e95</string>
+</dict>
+</plist>
