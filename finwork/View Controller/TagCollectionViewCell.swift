@@ -18,7 +18,8 @@ class TagCollectionViewCell: UICollectionViewCell {
 
     func configure(withViewModel viewModel: String) {
         
-        tag_btn.titleLabel?.font = tag_btn.titleLabel?.font.withSize(10)
+        
+        //tag_btn.titleLabel?.font = [UIFont .systemFontSize:6]
         let tag = TravelListItemTableViewCell.tagItem
         print("TC23",tag)
         //let tagList: [String] = (tag.components(separatedBy: "#"))
@@ -27,11 +28,14 @@ class TagCollectionViewCell: UICollectionViewCell {
             print ("TC26",tagItem2)
             
             //item = tagItem2
-            //tag_btn.setTitle( item , for: .normal)
-            tag_btn.titleLabel?.text = viewModel
-            print("TC32",tagItem2)
+            //tag_btn.titleLabel?.text = viewModel 跑不出來
+            
+            
         }
+        tag_btn.titleLabel?.font = tag_btn.titleLabel?.font.withSize(6)
+        tag_btn.setTitle( viewModel , for: .normal)
         
+        print("TC32",viewModel)
         
                             
 

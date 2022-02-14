@@ -45,6 +45,9 @@
 		AFB66C0843DA54470B159799 /* Pods_finwork_finworkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1A768E9E77EA87910A600A /* Pods_finwork_finworkUITests.framework */; };
 		B81A4F0D2780243B00AEDAA6 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81A4F0C2780243B00AEDAA6 /* HamburgerViewController.swift */; };
 		B87771902796720900252FBF /* AddUserDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877718F2796720900252FBF /* AddUserDataViewController.swift */; };
+		B8A3546F27B8143C0017A617 /* AddLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A3546E27B8143B0017A617 /* AddLicenseViewController.swift */; };
+		B8A3547127B89C800017A617 /* AddHobbiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A3547027B89C800017A617 /* AddHobbiesViewController.swift */; };
+		B8A3547327B955840017A617 /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A3547227B955840017A617 /* IntroduceViewController.swift */; };
 		B8D52763275F783700DC90C2 /* InsertDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D52762275F783700DC90C2 /* InsertDate.swift */; };
 		B8D52765275FCF4100DC90C2 /* TraveListCellTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D52764275FCF4100DC90C2 /* TraveListCellTableViewController.swift */; };
 		B8D52768276970D400DC90C2 /* AddPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D52767276970D400DC90C2 /* AddPlace.swift */; };
@@ -135,6 +138,9 @@
 		B81A4F0C2780243B00AEDAA6 /* HamburgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HamburgerViewController.swift; path = "/Users/evanlu/Desktop/rebackup/finwork/finwork/View Controller/HamburgerViewController.swift"; sourceTree = "<absolute>"; };
 		B877718F2796720900252FBF /* AddUserDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserDataViewController.swift; sourceTree = "<group>"; };
 		B89E669727B24F81004DD3E2 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8A3546E27B8143B0017A617 /* AddLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLicenseViewController.swift; sourceTree = "<group>"; };
+		B8A3547027B89C800017A617 /* AddHobbiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHobbiesViewController.swift; sourceTree = "<group>"; };
+		B8A3547227B955840017A617 /* IntroduceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceViewController.swift; sourceTree = "<group>"; };
 		B8D52762275F783700DC90C2 /* InsertDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertDate.swift; sourceTree = "<group>"; };
 		B8D52764275FCF4100DC90C2 /* TraveListCellTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TraveListCellTableViewController.swift; path = "finwork/View Controller/TraveListCellTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		B8D52767276970D400DC90C2 /* AddPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlace.swift; sourceTree = "<group>"; };
@@ -226,6 +232,9 @@
 				B8D6916327A46D89005E7B05 /* TagCollectionViewCell.swift */,
 				B8D6916727A6881B005E7B05 /* FindPartnerViewController.swift */,
 				B8E7F6FE27A7B38200378D8B /* SelectLocationViewController.swift */,
+				B8A3546E27B8143B0017A617 /* AddLicenseViewController.swift */,
+				B8A3547027B89C800017A617 /* AddHobbiesViewController.swift */,
+				B8A3547227B955840017A617 /* IntroduceViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -624,6 +633,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B81A4F0D2780243B00AEDAA6 /* HamburgerViewController.swift in Sources */,
+				B8A3547127B89C800017A617 /* AddHobbiesViewController.swift in Sources */,
 				B8E835D72773995600486E0A /* FirestoreDatabase.swift in Sources */,
 				B8D52775276E43CC00DC90C2 /* TraveListViewModels.swift in Sources */,
 				207EF80B26A6F930007F208F /* SignInViewController.swift in Sources */,
@@ -643,6 +653,7 @@
 				20815C6B26B710E600487DB9 /* JoinPageViewController.swift in Sources */,
 				B8D5276D276C719C00DC90C2 /* AddPlaceItemTableViewCell.swift in Sources */,
 				20CE8CD5267DDF3A001DC2CD /* AppDelegate.swift in Sources */,
+				B8A3547327B955840017A617 /* IntroduceViewController.swift in Sources */,
 				8461224E2757712100CDD54F /* JoinListViewController.swift in Sources */,
 				20A4B4E426A140DA0005EBD6 /* AddPlaceViewController.swift in Sources */,
 				208E78D626AB48A5001D9FB4 /* CarImageView.swift in Sources */,
@@ -651,6 +662,7 @@
 				205A513E26BEA8DF0047AD09 /* MachAIRecommendViewController.swift in Sources */,
 				20CE8D0D269044DE001DC2CD /* FindNavigationViewController.swift in Sources */,
 				208D432626C164580069379E /* MessageViewController.swift in Sources */,
+				B8A3546F27B8143C0017A617 /* AddLicenseViewController.swift in Sources */,
 				B87771902796720900252FBF /* AddUserDataViewController.swift in Sources */,
 				20CE8D05267F010F001DC2CD /* machpagViewController.swift in Sources */,
 				209284B226C0329600E602C3 /* UserFileViewController.swift in Sources */,

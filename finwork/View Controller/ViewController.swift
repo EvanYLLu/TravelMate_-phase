@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
     
+        
     @IBOutlet weak var close_menu: UIView!
     
     @IBOutlet weak var menu_leading: NSLayoutConstraint!
@@ -90,6 +92,10 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        guard let userID = Auth.auth().currentUser?.uid else { return }
+
+        print("VC95",userID)
+        
         adImageView.dataSource = self
         adImageView.delegate = self
         Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(changeBanner), userInfo: nil, repeats: true)

@@ -85,6 +85,7 @@ struct user: Codable {
 }
 
 struct user_action: Codable {
+    let user_id: String?
     let travel_id: String?
     let history＿partner: String?
     let recruit＿travel: String?//正在開團

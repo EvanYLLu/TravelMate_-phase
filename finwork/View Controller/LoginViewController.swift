@@ -15,6 +15,45 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var passwd: UITextField!
     
+    func Login_for_10() {
+        let email: String = "123@123.com"
+        let passwd: String = "123456"
+
+        //let error = validateFiled()
+     Auth.auth().signIn(withEmail: email, password: passwd) {authResult, error in
+         if error != nil{
+             //有錯誤時執行
+             let alertController = UIAlertController(
+                 title: "錯誤",
+                 message: "帳號密碼錯誤",
+                 preferredStyle: .alert)
+
+             // 建立[取消]按鈕
+             let cancelAction = UIAlertAction(
+               title: "重試",
+                 style: .cancel,
+               handler: nil)
+             alertController.addAction(cancelAction)
+
+             // 顯示提示框
+             self.present(
+               alertController,
+               animated: true,
+               completion: nil)
+             
+             //self.email.text = ""
+             //self.passwd.text = ""
+             
+         }else{
+             //沒錯誤時執行
+             let storyboard = UIStoryboard(name: "Main", bundle: nil)
+             let vc = storyboard.instantiateViewController(withIdentifier: "index")
+                vc.modalPresentationStyle = .overFullScreen
+             self.navigationController?.pushViewController(vc, animated: true)
+             
+         }//else
+     }//func
+    }
     
     /*
     /// 監聽鍵盤 frame 改變事件(鍵盤切換時總會觸發，不管是不是相同 type 的....例如：預設鍵盤 → 數字鍵盤)
@@ -140,8 +179,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         Login()
+        
     }
     
+    
+    @IBAction func respect_10_authoritah(_ sender: Any) {
+        Login_for_10()
+    }
     
     func Login() {
         let email_value: String? = email.text
@@ -183,8 +227,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
    
         
     }
+        
+        
+            
+        }
     
-    }
+    
+        
     /*
     // MARK: - Navigation
 
@@ -198,5 +247,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.navigationController?.navigationBar.isHidden = true
     }
 
-}
+    }
+
 

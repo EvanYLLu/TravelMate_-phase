@@ -22,6 +22,18 @@ class AddUserDataViewController: UIViewController {
     
     @IBOutlet weak var habitat: UITextField!
    
+    //static var user_name: String = ""
+    
+    struct basicData {
+        static var user_name: String = ""
+        static var user_nikename: String = ""
+        static var user_gender: String = ""
+        static var user_birthday: Date? = nil
+        static var user_habitat: String = ""
+        
+        
+    }
+    
     let habitatPick = UIPickerView()
     var genderType: String = ""
 
@@ -38,12 +50,76 @@ class AddUserDataViewController: UIViewController {
             
         }
     }
+    
+    func sendData() -> basicData {
+        basicData.user_name = self.insert_name.text!
+        basicData.user_nikename = self.insert_nickname.text!
+        basicData.user_gender = self.genderType
+        basicData.user_birthday = self.birthday.date
+        basicData.user_habitat = self.habitat.text!
+        return basicData()
+    }
+    
+    func confirm(rf: String) {
+        // 建立一個提示框
+        let alertController = UIAlertController(
+            title: "資料不完整",
+            message: "\(rf)欄位未輸入",
+            preferredStyle: .alert)
+
+        // 建立[送出]按鈕
+        let okAction = UIAlertAction(
+          title: "OK",
+            style: .default,
+          handler: nil)
+        alertController.addAction(okAction)
+
+        // 顯示提示框
+        self.present(
+          alertController,
+          animated: true,
+          completion: nil)
+    }
+    
+    func chack_input() {
+        
+        let datenow = Date()
+        var dateComponent = DateComponents()
+         
+        dateComponent.year = -5
+
+        let futureDate = Calendar.current.date(byAdding: dateComponent, to: datenow)
+
+        
+        if insert_name.text == "" {
+            var namerf: String = "姓名"
+            confirm(rf: namerf)
+        } else if insert_nickname.text == "" {
+            var nikenamerf: String = "暱稱"
+            confirm(rf: nikenamerf)
+        } else if birthday.date > futureDate! {
+            var birthdayrf: String = "生日"
+            confirm(rf: birthdayrf)
+        } else if habitat.text == "" {
+            var habitatrf: String = "居住地"
+            confirm(rf: habitatrf)
+        } else {
+            sendData()
+            print("AUD108",AddUserDataViewController.basicData.user_name)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "adduser2")
+                       vc.modalPresentationStyle = .overFullScreen
+                    self.navigationController?.pushViewController(vc, animated: false)
+             
+        }
+    }
+    
     @IBAction func send(_ sender: Any) {
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "adduser2")
-           vc.modalPresentationStyle = .overFullScreen
-        self.navigationController?.pushViewController(vc, animated: false)
+       
+        chack_input()
+        
+        
         /**
         let user_name: String = insert_name.text!
         let user_nikename: String = insert_nickname.text!
