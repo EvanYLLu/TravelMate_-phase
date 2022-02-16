@@ -9,6 +9,10 @@ import UIKit
 
 class AddLicenseViewController: UIViewController {
 
+    static var license: String = "none"
+    
+    @IBOutlet weak var license_table: UITableView!
+    
     @IBAction func skip_btn(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

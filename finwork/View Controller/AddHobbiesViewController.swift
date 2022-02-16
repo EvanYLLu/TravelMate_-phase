@@ -8,7 +8,11 @@
 import UIKit
 
 class AddHobbiesViewController: UIViewController {
-
+    
+    static var user_hobbies: [String] = [""]
+    
+    @IBOutlet weak var hobbies_collection: UICollectionView!
+    
     @IBAction func skip_btn(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

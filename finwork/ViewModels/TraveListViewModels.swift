@@ -58,10 +58,10 @@ struct user: Codable {
     let user_birthday: Date
     let user_habitat: String//居住地
     let user_license: String//執照
-    let user_hobbies: String//興趣
-    let follower: String//粉絲
+    let user_hobbies: [String]//興趣
+    let follower: [String]//粉絲
     let introduce_content: String//自我介紹
-    let voyeur: String//追蹤
+    let voyeur: [String]//追蹤
     
     var dictionary:[String:Any] {
         return [

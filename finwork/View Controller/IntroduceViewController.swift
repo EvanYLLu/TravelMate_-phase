@@ -9,8 +9,8 @@ import UIKit
 
 class IntroduceViewController: UIViewController {
 
-     
-    
+    static let defulvalue: String = "none"
+    static let defulvalue2: [String] = []
     @IBOutlet weak var start_btn: UIButton!
     
     
@@ -26,7 +26,7 @@ class IntroduceViewController: UIViewController {
     
     func createUser() {
         
-        let userItem = user(id: "", user_imagetext: "", user_name: AddUserDataViewController.basicData.user_name, user_id: "", user_nikename: AddUserDataViewController.basicData.user_nikename, user_gender: AddUserDataViewController.basicData.user_gender, user_birthday: AddUserDataViewController.basicData.user_birthday!, user_habitat: AddUserDataViewController.basicData.user_habitat, user_license: "", user_hobbies: "", follower: "", introduce_content: "", voyeur: "")
+        let userItem = user(id: "", user_imagetext: "", user_name: AddUserDataViewController.basicData.user_name, user_id: "", user_nikename: AddUserDataViewController.basicData.user_nikename, user_gender: AddUserDataViewController.basicData.user_gender, user_birthday: AddUserDataViewController.basicData.user_birthday!, user_habitat: AddUserDataViewController.basicData.user_habitat, user_license: AddLicenseViewController.license, user_hobbies: AddHobbiesViewController.user_hobbies, follower: IntroduceViewController.defulvalue2, introduce_content: IntroduceViewController.defulvalue, voyeur: IntroduceViewController.defulvalue2)
         
     }
     

@@ -44,6 +44,8 @@
 		84612250275A09D500CDD54F /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461224F275A09D400CDD54F /* TextField.swift */; };
 		AFB66C0843DA54470B159799 /* Pods_finwork_finworkUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D1A768E9E77EA87910A600A /* Pods_finwork_finworkUITests.framework */; };
 		B81A4F0D2780243B00AEDAA6 /* HamburgerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81A4F0C2780243B00AEDAA6 /* HamburgerViewController.swift */; };
+		B840287F27BD4E170068FC42 /* HobbieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B840287D27BD4E170068FC42 /* HobbieCollectionViewCell.swift */; };
+		B840288027BD4E170068FC42 /* HobbieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B840287E27BD4E170068FC42 /* HobbieCollectionViewCell.xib */; };
 		B87771902796720900252FBF /* AddUserDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877718F2796720900252FBF /* AddUserDataViewController.swift */; };
 		B8A3546F27B8143C0017A617 /* AddLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A3546E27B8143B0017A617 /* AddLicenseViewController.swift */; };
 		B8A3547127B89C800017A617 /* AddHobbiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A3547027B89C800017A617 /* AddHobbiesViewController.swift */; };
@@ -136,6 +138,8 @@
 		B80B9AD2275C3726006D2418 /* finworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = finworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B80B9AD3275C3726006D2418 /* finworkUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = finworkUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B81A4F0C2780243B00AEDAA6 /* HamburgerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HamburgerViewController.swift; path = "/Users/evanlu/Desktop/rebackup/finwork/finwork/View Controller/HamburgerViewController.swift"; sourceTree = "<absolute>"; };
+		B840287D27BD4E170068FC42 /* HobbieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbieCollectionViewCell.swift; sourceTree = "<group>"; };
+		B840287E27BD4E170068FC42 /* HobbieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HobbieCollectionViewCell.xib; sourceTree = "<group>"; };
 		B877718F2796720900252FBF /* AddUserDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserDataViewController.swift; sourceTree = "<group>"; };
 		B89E669727B24F81004DD3E2 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A3546E27B8143B0017A617 /* AddLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLicenseViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				B8A3546E27B8143B0017A617 /* AddLicenseViewController.swift */,
 				B8A3547027B89C800017A617 /* AddHobbiesViewController.swift */,
 				B8A3547227B955840017A617 /* IntroduceViewController.swift */,
+				B840287D27BD4E170068FC42 /* HobbieCollectionViewCell.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				20CE8CD4267DDF3A001DC2CD /* AppDelegate.swift */,
 				20CE8CD6267DDF3A001DC2CD /* SceneDelegate.swift */,
 				B8D6916427A46D89005E7B05 /* TagCollectionViewCell.xib */,
+				B840287E27BD4E170068FC42 /* HobbieCollectionViewCell.xib */,
 				20CE8CDA267DDF3A001DC2CD /* Main.storyboard */,
 				20822A3E26C10E2400EFC2E0 /* MessageViewCell.xib */,
 				B8D52777276F469900DC90C2 /* TravelListItemTableViewCell.xib */,
@@ -463,6 +469,7 @@
 				B8F928E8275C27D60045972A /* GoogleService-Info.plist in Resources */,
 				20CE8CE1267DDF3C001DC2CD /* LaunchScreen.storyboard in Resources */,
 				20705C1926BAD389001B57B2 /* test in Resources */,
+				B840288027BD4E170068FC42 /* HobbieCollectionViewCell.xib in Resources */,
 				20822A4026C10E2400EFC2E0 /* MessageViewCell.xib in Resources */,
 				B8D52779276F469900DC90C2 /* TravelListItemTableViewCell.xib in Resources */,
 				20CE8CDE267DDF3C001DC2CD /* Assets.xcassets in Resources */,
@@ -641,6 +648,7 @@
 				B8E835D527737A4400486E0A /* TravelDB.swift in Sources */,
 				20822A3F26C10E2400EFC2E0 /* MessageViewCell.swift in Sources */,
 				84612250275A09D500CDD54F /* TextField.swift in Sources */,
+				B840287F27BD4E170068FC42 /* HobbieCollectionViewCell.swift in Sources */,
 				B8D52768276970D400DC90C2 /* AddPlace.swift in Sources */,
 				B8D6916827A6881B005E7B05 /* FindPartnerViewController.swift in Sources */,
 				843E95E4274AA13700035500 /* TravelListViewController.swift in Sources */,
