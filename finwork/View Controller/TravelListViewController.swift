@@ -47,6 +47,11 @@ class TravelListViewController: UIViewController {
 
         }
          */
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+           // Code you want to be delayed
+        }
+        
         let nib = UINib(nibName: "TravelListItemTableViewCell", bundle: nil)
         tableViewItem.register(nib, forCellReuseIdentifier: identifier)
         // Do any additional setup after loading the view.

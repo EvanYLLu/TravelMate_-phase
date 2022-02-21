@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import GoogleSignIn
 
 class HamburgerViewController: UIViewController {
+    
+    
+    
 
     
     @IBOutlet weak var user_photo: UIImageView!
@@ -15,6 +21,20 @@ class HamburgerViewController: UIViewController {
     @IBOutlet weak var following: UILabel!
     
     
+    @IBAction func logup(_ sender: Any) {
+        if Auth.auth().currentUser != nil {
+                do {
+                    GIDSignIn.sharedInstance().signOut()
+                    try Auth.auth().signOut()
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "SignUp")
+                       vc.modalPresentationStyle = .overFullScreen
+                    self.navigationController?.pushViewController(vc, animated: false)
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

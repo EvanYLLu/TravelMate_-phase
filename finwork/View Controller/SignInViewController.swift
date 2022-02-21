@@ -6,18 +6,87 @@
 //
 
 import UIKit
-//import FirebaseUI
+import FirebaseUI
+//import FirebaseCore
+import Firebase
+import FirebaseFirestore
+import GoogleSignIn
+
 
 class SignInViewController: UIViewController//, FUIAuthDelegate
 {
+    static var user_email: String = ""
+    
+    //let db = Firestore.firestore()
+    //let citiesRef = db.collection("users")
+
+    
+    static func chack_login() {
+        
+        if GIDSignIn.sharedInstance()?.currentUser != nil {
+            
+            //GIDSignIn.sharedInstance().signIn()
+
+
+        } else {
+            //
+            GIDSignIn.sharedInstance().signIn()
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "adduser1")
+               vc.modalPresentationStyle = .overFullScreen
+            
+        }
+
+        
+    }
+    
     @IBAction func facebookSignIn(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "adduser1")
            vc.modalPresentationStyle = .overFullScreen
         self.navigationController?.pushViewController(vc, animated: false)
     }
-    @IBAction func googleSignIn(_ sender: Any) {
+    
+        
+    @IBAction func google_signIn(_ sender: Any) {
+        print("SI45")
+        if GIDSignIn.sharedInstance()?.currentUser != nil {
+            
+            GIDSignIn.sharedInstance().signIn()
+
+
+        } else {
+            //
+            GIDSignIn.sharedInstance().signIn()
+            
+            db.collection("users").getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                } else {
+                    let citiesRef = db.collection("users")
+                    let query = citiesRef.whereField("user_id", isEqualTo: SignInViewController.user_email)
+                    print("query",query)
+                    //if query != ""{
+                        
+                   // }
+                }
+            
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "adduser1")
+               vc.modalPresentationStyle = .overFullScreen
+            self.navigationController?.pushViewController(vc, animated: false)
+        }
     }
+    }
+    
+                //let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                //let vc = storyboard.instantiateViewController(withIdentifier: "adduser1")
+                   //vc.modalPresentationStyle = .overFullScreen
+                //self.navigationController?.pushViewController(vc, animated: false)
+            
+        
+    
     @IBAction func appleIDSignIn(_ sender: Any) {
     }
     /*
@@ -41,7 +110,13 @@ class SignInViewController: UIViewController//, FUIAuthDelegate
     } */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        //登錄用的
+        
+                 
 
+        
         // Do any additional setup after loading the view.
     }
     

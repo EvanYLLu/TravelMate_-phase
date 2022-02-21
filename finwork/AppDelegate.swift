@@ -9,12 +9,14 @@ import UIKit
 import GoogleMaps
 import Firebase
 import FirebaseFirestore
+import FirebaseCore
+import GoogleSignIn
 
 @main
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -22,11 +24,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        GMSServices.provideAPIKey("AIzaSyCnxEsviVbzh1zF9MHUFoKZODZjUAyKOak")
         
         FirebaseApp.configure()
+        GIDSignIn.sharedInstance()?.clientID = "978340723728-2142ihi1pm6cd465p9b3rpi2iiu6fep6.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance()?.delegate = self
                
         
         return true
     }
+    
+    @available(iOS 9.0, *)
+    func application(_ application: UIApplication, open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any])
+      -> Bool {
+          return GIDSignIn.sharedInstance()!.handle(url)
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        print("Your email is \(user.profile.email ?? "No email")")
+        SignInViewController.user_email = user.profile.email
+        SignInViewController.chack_login()
+    }
 
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url)
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

@@ -50,7 +50,7 @@ struct recure: Codable {
 
 struct user: Codable {
     var id: String
-    let user_imagetext: String
+    let user_imagetext: String!
     let user_name: String
     let user_id: String//登入帳號
     let user_nikename: String
@@ -59,9 +59,9 @@ struct user: Codable {
     let user_habitat: String//居住地
     let user_license: String//執照
     let user_hobbies: [String]//興趣
-    let follower: [String]//粉絲
-    let introduce_content: String//自我介紹
-    let voyeur: [String]//追蹤
+    let follower: [String]!//粉絲
+    let introduce_content: String!//自我介紹
+    let voyeur: [String]!//追蹤
     
     var dictionary:[String:Any] {
         return [

@@ -26,13 +26,14 @@ class IntroduceViewController: UIViewController {
     
     func createUser() {
         
-        let userItem = user(id: "", user_imagetext: "", user_name: AddUserDataViewController.basicData.user_name, user_id: "", user_nikename: AddUserDataViewController.basicData.user_nikename, user_gender: AddUserDataViewController.basicData.user_gender, user_birthday: AddUserDataViewController.basicData.user_birthday!, user_habitat: AddUserDataViewController.basicData.user_habitat, user_license: AddLicenseViewController.license, user_hobbies: AddHobbiesViewController.user_hobbies, follower: IntroduceViewController.defulvalue2, introduce_content: IntroduceViewController.defulvalue, voyeur: IntroduceViewController.defulvalue2)
+        let userItem = user(id: "", user_imagetext: "", user_name: AddUserDataViewController.basicData.user_name, user_id: SignInViewController.user_email, user_nikename: AddUserDataViewController.basicData.user_nikename, user_gender: AddUserDataViewController.basicData.user_gender, user_birthday: AddUserDataViewController.basicData.user_birthday!, user_habitat: AddUserDataViewController.basicData.user_habitat, user_license: AddLicenseViewController.license, user_hobbies: AddHobbiesViewController.user_hobbies, follower: IntroduceViewController.defulvalue2, introduce_content: IntroduceViewController.defulvalue, voyeur: IntroduceViewController.defulvalue2)
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("IV36",SignInViewController.user_email)
         // Do any additional setup after loading the view.
     }
     

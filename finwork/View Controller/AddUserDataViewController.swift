@@ -163,6 +163,8 @@ class AddUserDataViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //print("AUD166",GIDGoogleUser.profile.email)
+        
         habitatPick.delegate = self
         habitatPick.dataSource = self
         habitat.inputView = habitatPick

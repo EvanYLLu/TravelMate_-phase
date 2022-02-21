@@ -95,8 +95,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
         print("1233333")
         
-        
-        
+        self.email.isHidden = true
+        self.passwd.isHidden = true
         
         /*
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
