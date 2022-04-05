@@ -31,6 +31,7 @@ struct travel {
     var tag: String
     var detail_content: String
     var time_sptamp:Date
+    var user_id:String
     
     var dictionary:[String:Any] {
         return [
@@ -45,7 +46,8 @@ struct travel {
             "cost":cost,
             "tag":tag,
             "detail_content":detail_content,
-            "time_sptamp":time_sptamp
+            "time_sptamp":time_sptamp,
+            "user_id":user_id
 
         ]
     }
@@ -66,7 +68,8 @@ extension travel : DocumentSerializable {
               let cost = dictionary["cost"] as? String,
               let tag = dictionary["tag"] as? String,
               let detail_content = dictionary["detail_content"] as? String,
-              let time_sptamp = dictionary["time_sptamp"] as? Date
+              let time_sptamp = dictionary["time_sptamp"] as? Date,
+              let user_id = dictionary["user_id"] as? String
         else {return nil}
         
         self.init(imagetext: imagetext,
@@ -80,7 +83,8 @@ extension travel : DocumentSerializable {
                   cost: cost,
                   tag: tag,
                   detail_content: detail_content,
-                  time_sptamp: time_sptamp)
+                  time_sptamp: time_sptamp,
+                  user_id: user_id)
     }
     
 

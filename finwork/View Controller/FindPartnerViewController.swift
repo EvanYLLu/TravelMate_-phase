@@ -7,11 +7,12 @@
 
 import UIKit
 
-class FindPartnerViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class FindPartnerViewController: UIViewController {
     
     
     var viewModel: AddTraveViewModels?
     let identifier = "AddTraveItemCellIdentifier"
+    var travel = [recure]()
     // MARK: - ButtonAction
     @IBOutlet weak var add_btn: UIButton!
     
@@ -22,31 +23,13 @@ class FindPartnerViewController: UIViewController,UITableViewDataSource,UITableV
     
     @IBOutlet weak var tableViewItem: UITableView!
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 0
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            //print("s82")
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? TravelListItemTableViewCell
-            //let itemViewModel  = viewModel?.item[indexPath.row]b
-            let itemViewModel : recure = AddTraveViewModels.myItems[indexPath.row]
-            
-            //let itemViewModel : recure = recure(id: "test",imagetext: "test",title: "test",start_time: "test",finish_time: "test",place: "test",people_num: "test",detail_localtion: "test",meeting_place: "test",cost: "test", tag: "test",detail_content: "test")
-            //print("88:", )
-            cell?.configure(withViewModel: itemViewModel)
-            cell?.tagCount(withViewModel: itemViewModel)
-            //print ("####################################")
-            //print("show up")
-            
-            
-            
-            return cell!
-        }
+    
     // MARK: - Function
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableViewItem.delegate = self
+        tableViewItem.dataSource = self
         add_btn.setTitle("", for: .normal)
         //tableViewItem.addSubview(add_btn)
         
@@ -57,6 +40,7 @@ class FindPartnerViewController: UIViewController,UITableViewDataSource,UITableV
         viewModel = AddTraveViewModels()
         print("FP52",AddTraveViewModels.myItems.count)
         tableViewItem.reloadData()
+        
     }
         // Do any additional setup after loading the view.
     }
@@ -72,4 +56,42 @@ class FindPartnerViewController: UIViewController,UITableViewDataSource,UITableV
     }
     */
 
-
+extension FindPartnerViewController: UITableViewDataSource,UITableViewDelegate {
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+                return (AddTraveViewModels.myItems.count)
+            }
+            
+            func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+                print("FP30")
+                let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? TravelListItemTableViewCell
+                //let itemViewModel  = viewModel?.item[indexPath.row]b
+                let itemViewModel : recure = AddTraveViewModels.myItems[indexPath.row]
+                
+                //let itemViewModel : recure = recure(id: "test",imagetext: "test",title: "test",start_time: "test",finish_time: "test",place: "test",people_num: "test",detail_localtion: "test",meeting_place: "test",cost: "test", tag: "test",detail_content: "test")
+                print("FP36:")
+                cell?.configure(withViewModel: itemViewModel)
+                cell?.tagCount(withViewModel: itemViewModel)
+                self.travel = AddTraveViewModels.myItems
+                //print ("####################################")
+                //print("show up")
+                
+                
+                
+                return cell!
+            }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            performSegue(withIdentifier: "joinPage", sender: self)
+            
+        }
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let destination = segue.destination as? JoinPageViewController {
+                destination.travelItem = travel[(tableViewItem.indexPathForSelectedRow?.row)!]
+                print("135",travel.count)
+                
+            }
+        }
+    
+}

@@ -46,10 +46,11 @@ struct recure: Codable {
     let tag: String?
     let detail_content: String?
     let time_sptamp: Date?
+    let user_id: String?
 }
 
 struct user: Codable {
-    var id: String
+    var id: String?
     let user_imagetext: String!
     let user_name: String
     let user_id: String//登入帳號
@@ -85,16 +86,23 @@ struct user: Codable {
 }
 
 struct user_action: Codable {
-    let user_id: String?
-    let travel_id: String?
-    let history＿partner: String?
-    let recruit＿travel: String?//正在開團
-    let done＿travel: String?//結束行程
-    let clockIn: String?
-    let place_id: String?//新增地點
+    let travel_id: [String]?
+    let history＿partner: [String]?
+    let recruit＿travel: [String]?//正在開團
+    let clockIn: [String]?
+    let place_id: [String]?//新增地點
     
 }
-
+struct get_hobbies: Codable {
+    let type_image: String
+    let type_name: String
+    var dictionary:[String:String] {
+        return [
+        "type_image":type_image,
+        "type_name":type_name
+        ]
+    }
+}
 
 
 /*
@@ -119,16 +127,105 @@ protocol AddTraveItemViewDelegate {
 
 let db = Firestore.firestore()
 
+class GetHobbies {
+    init() {
+        GetHobbies.gethobbies()
+    }
+    static var hobbiesItems: [get_hobbies] = []
+    //static var type_image: String = ""
+    static var type_name: [String] = []
+    
+    static func gethobbies() {
+        db.collection("hobbies").getDocuments{(querySnapshot, error) in
+    if let error = error {
+            print("Error getting documents: \(error)")
+    } else {
+        for document in querySnapshot!.documents {
+            //GetHobbies.type_image = document.data()[ "type_image"] as! String
+            //GetHobbies.type_name = document.data()[ "type_name"] as! String
+            let hobbies: [get_hobbies] = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data(as: get_hobbies.self)}
+            //GetHobbies.hobbiesItems.removeAll()
+            GetHobbies.hobbiesItems = hobbies
+        }
+    }
+        }
+        
+        db.collection("hobbies").whereField("type_name", isNotEqualTo: "")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                        //GetHobbies.type_name = querySnapshot!.documents as! [String]
+                    }
+                }
+        }
+    }
+    
+
+}
+
 class AddUserViewModels {
     init() {
-        self.loadUserData()
+        AddUserViewModels.loadUserData()
     }
     
     static var userItems: [user] = []
-    func loadUserData() {
+    
+    static var user_name: String = ""
+    static var user_nikename: String = ""
+    static var user_imagetext: StorageReference? = nil
+    static var introduce_content: String = ""
+    static var user_gender: String = ""
+    static var follower: [String] = [""]
+    static var voyeur: [String] = [""]
+    static var user_habitat: String = ""
+    static var user_birthday: String = ""
+    static var user_hobbies: [String] = [""]
+    static var id: String = ""
+    static func loadUserData() -> (Void) {
         
+        db.collection("users").whereField("user_id", isEqualTo: SignInViewController.user_email)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("TLV136","\(document.documentID) => \(document.data())")
+                        
+                        AddUserViewModels.user_name = document.data()[ "user_name"] as! String
+                        AddUserViewModels.user_nikename = document.data()[ "user_nikename"] as! String
+                        let storage = Storage.storage()
+                        let storageRef = storage.reference()
+                        AddUserViewModels.user_imagetext = storageRef.child(document.data()[ "user_imagetext"] as! String)
+                        AddUserViewModels.user_gender = document.data()[ "user_gender"] as! String
+                        AddUserViewModels.introduce_content = document.data()[ "introduce_content"] as! String
+                        AddUserViewModels.follower = document.data()[ "follower"] as! [String]
+                        AddUserViewModels.voyeur = document.data()[ "voyeur"] as! [String]
+                        //AddUserViewModels.user_birthday = document.data()[ "user_birthday"] as? Date
+                        AddUserViewModels.user_habitat = document.data()[ "user_habitat"] as! String
+                        AddUserViewModels.user_hobbies = document.data()[ "user_hobbies"] as! [String]
+                        print("TLV160",document.data()[ "user_birthday"] as! Timestamp)
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "YYYY年MM月dd日"
+                        let timestamp: Timestamp = document.data()[ "user_birthday"] as! Timestamp
+                        AddUserViewModels.user_birthday = dateFormatter.string(from: timestamp.dateValue())
+                        
+                        AddUserViewModels.id = document.data()[ "id"] as! String
+                        
+                        var users: [user] = querySnapshot!.documents.compactMap{querySnapshot in try? document.data(as: user.self)}
+                            
+                        AddUserViewModels.userItems = users
+                            
+                        print("TLV143",AddUserViewModels.user_nikename)
+                        
+                        }
+                }
+        }
+        
+    
     }
-
 }
 
 class AddTraveViewModels {
@@ -138,7 +235,7 @@ class AddTraveViewModels {
    // /**
     {
        
-            self.loadData()
+        AddTraveViewModels.loadData()
             //print("0051:",self.item.count)
         
         //self.item = loadData()
@@ -151,8 +248,8 @@ class AddTraveViewModels {
 static var myItems: [recure] = []
 
 
-    
-func loadData(/*completion: @escaping () -> [AddTraveItemPresentable]*/) //-> [AddTraveItemPresentable]
+     
+static func loadData(/*completion: @escaping () -> [AddTraveItemPresentable]*/) //-> [AddTraveItemPresentable]
     {
     
     db.collection("travel").getDocuments { (querySnapshot, error) in
@@ -162,40 +259,11 @@ func loadData(/*completion: @escaping () -> [AddTraveItemPresentable]*/) //-> [A
             
             for _ in querySnapshot!.documents {
 
-                //let opter: Int = 0
-                //let count: Int = self.item.count
-                /*
-                var iditem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["id"]}
-                var titleitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["title"]}
-                var placeitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["place"]}
-                var start_timeitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["start_time"]}
-                var finish_timeitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["finish_time"]}
-                var people_numitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["people_num"]}
-                var tagitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["tag"]}
-                var imagetextitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["imagetext"]}
-                var detail_localtionitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["detail_localtion"]}
-                var meeting_placeitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["meeting_place"]}
-                var costitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["cost"]}
-                var detail_contentitem: Any = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data()["detail_content"]}
-               */
-                var i123: [recure] = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data(as: recure.self)} as! [recure]
-               /*
-                var index = AddTraveItemViewModels(id: String(describing: iditem),
-                                                  imagetext: String(describing: imagetextitem),
-                                                  title: String(describing: titleitem),
-                                                  start_time: String(describing: start_timeitem),
-                                                  finish_time: String(describing: finish_timeitem),
-                                                  place: String(describing: placeitem),
-                                                  people_num: String(describing: people_numitem),
-                                                  detail_localtion: String(describing: detail_localtionitem),
-                                                  meeting_place: String(describing: meeting_placeitem),
-                                                  cost: String(describing: costitem),
-                                                  tag: String(describing: tagitem),
-                                                  detail_content: String(describing: detail_contentitem))
-                //print("hood")
-                */
+                
+                var i123: [recure] = querySnapshot!.documents.compactMap{querySnapshot in try? querySnapshot.data(as: recure.self)}
+               
                 AddTraveViewModels.myItems.removeAll()
-                //AddTraveViewModels.myItems.append(contentsOf:[i123])
+                
                 AddTraveViewModels.myItems = i123
                 
                 
@@ -216,9 +284,48 @@ func loadData(/*completion: @escaping () -> [AddTraveItemPresentable]*/) //-> [A
         //print("vti", self.item)
     }//getDocuments
     print("voo")
+        
+        
     //return item//completion()//
 }//func
 }//class
+
+class AddUserAction {
+    init() {
+        
+    }
+    static var travel_id: [Set<String>] = []
+    static var history＿partner: [String] = []
+    static var recruit＿travel: [String] = []
+    static var clockIn: [String] = []
+    static var place_id: [String] = []
+    
+    static func loadData() {
+        db.collection("user_action").whereField("id", isEqualTo: AddUserViewModels.id).getDocuments() { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting documents: \(error)")
+            } else {
+                
+                for document in querySnapshot!.documents {
+
+                    
+                    AddUserAction.travel_id = document.data()[ "travel_id"] as! [Set<String>]
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                }//for
+                print("tqqqq")
+
+                }//else
+            //print("vti", self.item)
+        }
+    }
+}
 
 extension AddTraveViewModels: AddTraveItemViewDelegate {
     func onAddTraveItemAdd() {

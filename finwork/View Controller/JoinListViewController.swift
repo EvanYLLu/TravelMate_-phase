@@ -13,11 +13,15 @@ import FirebaseStorage
 var imgurl: URL = URL(string: "http://nshipster.com/")!//預設url
 
 
-class JoinListViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class JoinListTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     
+    
+    var place_name: String?
     //TextField
     //
+    var keyboardHeight: CGFloat = 0 // keep 住鍵盤的高度，在每次 ChangeFrame 的時侯記錄
+    
     
     @IBOutlet weak var titel_field: UITextView!
     
@@ -28,7 +32,6 @@ class JoinListViewController: UIViewController, UIImagePickerControllerDelegate,
     
     @IBOutlet weak var select_location: UIButton!
     
-    @IBOutlet weak var place_field: UITextField!
     @IBOutlet weak var people_num_field: UITextField!
     
     @IBOutlet weak var location_field: UITextField!
@@ -48,6 +51,11 @@ class JoinListViewController: UIViewController, UIImagePickerControllerDelegate,
     
     
     
+    
+    @IBAction func send_location_btn(_ sender: Any) {
+    }
+    
+    
     @IBAction func pickImage(_ sender: Any) {
         print("JL47")
         chackPermissions()
@@ -61,6 +69,7 @@ class JoinListViewController: UIViewController, UIImagePickerControllerDelegate,
     }
     
     /**
+     
      
      
              
@@ -123,6 +132,16 @@ class JoinListViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
     
+    @objc func changeName(name: String) {
+        print("JL134")
+
+        select_location.setTitle(name, for: .normal)
+        }
+
+    
+    func reload() {
+        self.select_location.reloadInputViews()
+    }
     
     @IBAction func preview(_ sender: Any) {
         
@@ -134,15 +153,16 @@ class JoinListViewController: UIViewController, UIImagePickerControllerDelegate,
         let title: String = titel_field.text
         let start_time: Date = strat_time_datepicker.date
         let finish_time: Date = finish_time_datepicker.date
-        let place: String! = place_field.text
+        let place: String! = SelectLocationViewController.city_name
         let people_num: String? = people_num_field.text
         let detail_localtion: String? = location_field.text
         let meeting_place: String? = meeting_place_field.text
         let cost: String? = cost_field.text
         let tag: String? = tag_field.text
         let detail_content: String! = detail_content_field.text
+        let user_id: String! = AddUserViewModels.id
         
-        let newtravel = travel(imagetext: imagetext, title: title, start_time: start_time, finish_time: finish_time, place: place, people_num: people_num!, detail_localtion: detail_localtion!, meeting_place: meeting_place!, cost: cost!, tag: tag!, detail_content: detail_content!, time_sptamp: Date())
+        let newtravel = travel(imagetext: imagetext, title: title, start_time: start_time, finish_time: finish_time, place: place, people_num: people_num!, detail_localtion: detail_localtion!, meeting_place: meeting_place!, cost: cost!, tag: tag!, detail_content: detail_content!, time_sptamp: Date(),user_id: user_id!)
         
         var ref:DocumentReference? = nil
         ref = cdb.db.collection("travel").addDocument(data: newtravel.dictionary) {
@@ -173,6 +193,10 @@ class JoinListViewController: UIViewController, UIImagePickerControllerDelegate,
                         }
             }
         }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "index")
+           vc.modalPresentationStyle = .overFullScreen
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     
@@ -220,21 +244,79 @@ class JoinListViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
     
+    /// 關閉鍵盤
+        ///
+        /// - Parameters:
+        ///   - touches: _
+        ///   - event: _
+        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+            self.view.endEditing(true)
+        }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         cdb.db = Firestore.firestore()
-        
-        
+        NotificationCenter.default.addObserver(self, selector: "changeName:", name: NSNotification.Name(rawValue: "refresh"), object: nil)
+        select_location.setTitle(SelectLocationViewController.city_name, for: .normal)
         //ref = Database.database().reference()
         //self.ref.child("users").child("123").setValue(["username": "1232"])
         //field_bottom_line()
         // Do any additional setup after loading the view.
+        
+        
+        
+        // 鍵盤的生命週期
+        // 註冊監聽鍵盤 frame 改變的事件
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
+        // 註冊監聽鍵盤出現的事件
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+
+        // 註冊監聽鍵盤消失的事件
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+               
+               
+        
+        
     }
+
+    /// 監聽鍵盤 frame 改變事件(鍵盤切換時總會觸發，不管是不是相同 type 的....例如：預設鍵盤 → 數字鍵盤)
+        ///
+        /// - Parameter notification: _
+        @objc func keyboardWillChangeFrame(_ notification: Notification) {
+            print("keyboardWillChangeFrame...")
+            
+            
+        
+        }
+        /// 監聽鍵盤開啟事件(鍵盤切換時總會觸發，不管是不是相同 type 的....例如：預設鍵盤 → 數字鍵盤)
+        ///
+        /// - Parameter notification: _
+        @objc func keyboardWillShow(_ notification: Notification) {
+            print("keyboardWillShow...")
+            
+            
+        }
+        
+        /// 監聽鍵盤關閉事件(鍵盤關掉時才會觸發)
+        ///
+        /// - Parameter notification: _
+        @objc func keyboardWillHide(_ notification: Notification) {
+            print("keyboardWillHide...")
+           
+        }
+            
+        
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        place_field.becomeFirstResponder()
+        
     }
 
     /*

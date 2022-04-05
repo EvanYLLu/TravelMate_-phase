@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class IntroduceViewController: UIViewController {
 
@@ -16,7 +17,7 @@ class IntroduceViewController: UIViewController {
     
     @IBAction func start(_ sender: Any) {
         
-        
+        createUser()
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "index")
@@ -27,6 +28,36 @@ class IntroduceViewController: UIViewController {
     func createUser() {
         
         let userItem = user(id: "", user_imagetext: "", user_name: AddUserDataViewController.basicData.user_name, user_id: SignInViewController.user_email, user_nikename: AddUserDataViewController.basicData.user_nikename, user_gender: AddUserDataViewController.basicData.user_gender, user_birthday: AddUserDataViewController.basicData.user_birthday!, user_habitat: AddUserDataViewController.basicData.user_habitat, user_license: AddLicenseViewController.license, user_hobbies: AddHobbiesViewController.user_hobbies, follower: IntroduceViewController.defulvalue2, introduce_content: IntroduceViewController.defulvalue, voyeur: IntroduceViewController.defulvalue2)
+        
+        var ref:DocumentReference? = nil
+        ref = cdb.db.collection("users").addDocument(data: userItem.dictionary) {
+            error in
+            
+            if let error = error {
+                print("error of adding Document: \(error.localizedDescription)")
+            } else {
+                print("Document added wift ID: \(ref!.documentID)")
+                cdb.lastid = ref!.documentID
+                let documentReference =
+                            db.collection("users").document(ref!.documentID)
+                        documentReference.getDocument { document, error in
+                                        
+                          guard let document = document,
+                                document.exists,
+                                var user = try? document.data(as: user.self)
+                          else {
+                                    return
+                          }
+                        user.id = ref!.documentID
+                          do {
+                             try documentReference.setData(from: user)
+                          } catch {
+                             print("IV55",error)
+                          }
+                                        
+                        }
+            }
+        }
         
     }
     

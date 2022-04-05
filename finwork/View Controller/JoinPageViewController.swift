@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import GoogleMaps
+import FirebaseStorage
+import FirebaseUI
 
 
 
@@ -17,6 +20,29 @@ class JoinPageViewController: UIViewController {
     
     var act_qabtn: Bool = false
     var act_introduction: Bool = true
+    var travelItem: recure?
+    
+    
+    
+    @IBOutlet weak var user_image: UIImageView!
+    
+    @IBOutlet weak var user_name: UILabel!
+    
+    @IBOutlet weak var user_gender: UIImageView!
+    
+    @IBOutlet weak var travel_title: UILabel!
+    
+    @IBOutlet weak var place: UILabel!
+    
+    @IBOutlet weak var start_time_data: UILabel!
+    
+    @IBOutlet weak var finish_time_data: UILabel!
+    
+    @IBOutlet weak var people_num: UILabel!
+    
+    @IBOutlet weak var detail_content: UILabel!
+    
+    @IBOutlet weak var map_view: GMSMapView!
     
     
     @IBOutlet var maskView: UIView!
@@ -336,6 +362,57 @@ class JoinPageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let dispatchGroup = DispatchGroup()
+        
+        db.collection("users").whereField("id", isEqualTo: travelItem?.user_id)
+                                      .getDocuments() { (querySnapshot, err) in
+                                          if let err = err {
+                                              print("Error getting documents: \(err)")
+                                          } else {
+                                              
+                                              dispatchGroup.enter()
+                                              for document in querySnapshot!.documents {
+                                                  
+                                                  let storage = Storage.storage()
+                                                  let storageRef = storage.reference()
+              
+                                                  self.user_name.text = document.data()[ "user_nikename"] as! String
+                                                  let photo: StorageReference = storageRef.child(document.data()[ "user_imagetext"] as! String)
+                                                  self.user_image.sd_setImage(with: photo)
+                                                                                         
+                                                  
+                                                      print("JP65")
+                                                  
+                                                  dispatchGroup.leave()
+                                                  DispatchQueue.main.async {
+                                                                                                        print("JP390") }
+                                                  }
+                                              DispatchQueue.main.async {
+                                                                                                    print("JP389") }
+                                          }
+                                          DispatchQueue.main.async {
+                                                                                                print("JP384")
+                                                                                            }
+                                      }
+        
+        let dateFormatter = DateFormatter()
+
+        // Set Date Format
+        dateFormatter.dateFormat = "YY/MM/dd HH:mm"
+        
+        print("JP340",travelItem?.id)
+        //TravelListItemTableViewCell.id = ""
+        travel_title.text = travelItem?.title
+        place.text = travelItem?.place
+        start_time_data.text = dateFormatter.string(from: travelItem?.start_time ?? Date())
+        finish_time_data.text = dateFormatter.string(from: travelItem?.finish_time ?? Date())
+        detail_content.text = travelItem?.detail_content
+        
+        map_view.settings.compassButton = true
+        map_view.isMyLocationEnabled = true
+        map_view.settings.myLocationButton = true
+        
+        //let camera = GMSCameraPosition.camera(withLatitude: 25.137302615618555, longitude: 121.5393622622502, zoom: 17.0)
         
         
         navigationItem.backBarButtonItem = UIBarButtonItem(
@@ -377,3 +454,10 @@ class JoinPageViewController: UIViewController {
 
 }
 
+extension JoinPageViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else {return}
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        
+    }
+}

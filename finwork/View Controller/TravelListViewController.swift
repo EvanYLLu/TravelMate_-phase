@@ -14,25 +14,46 @@ import FirebaseFirestore
 
 class TravelListViewController: UIViewController {
     
+    var refreshControl:UIRefreshControl!
+    
+    
+    
     @IBOutlet weak var tableViewItem: UITableView!
     
-    @IBAction func btn(_ sender: Any) {
-       
-        print("arkk",AddTraveViewModels.myItems.count)
-        tableViewItem.reloadData()
-    }
+ 
+    
+    
+    
+    
+   
     
     var viewModel: AddTraveViewModels?
     let identifier = "AddTraveItemCellIdentifier"
     
+    var travel = [recure]()
     var db:Firestore!
     var travelRef:DocumentReference!
     
 
+    @objc func reload() {
+        tableViewItem.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        refreshControl = UIRefreshControl()
+        tableViewItem.addSubview(refreshControl)
+        
+        
+        
+        refreshControl.addTarget(self, action: #selector(reload), for: UIControl.Event.valueChanged)
         print("+++++where am i+++++++")
+        
+        
         /**
         travelRef.getDocument { (docSnapshot error) in
             guard let docSnapshot = docSnapshot, docSnapshot.exists else {return}
@@ -46,12 +67,12 @@ class TravelListViewController: UIViewController {
                 }
 
         }
-         */
+         
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
            // Code you want to be delayed
         }
-        
+         */
         let nib = UINib(nibName: "TravelListItemTableViewCell", bundle: nil)
         tableViewItem.register(nib, forCellReuseIdentifier: identifier)
         // Do any additional setup after loading the view.
@@ -94,19 +115,26 @@ extension TravelListViewController: UITableViewDataSource, UITableViewDelegate {
         //let itemViewModel : recure = recure(id: "test",imagetext: "test",title: "test",start_time: "test",finish_time: "test",place: "test",people_num: "test",detail_localtion: "test",meeting_place: "test",cost: "test", tag: "test",detail_content: "test")
         //print("88:", )
         cell?.configure(withViewModel: itemViewModel)
-        
         cell?.tagCount(withViewModel: itemViewModel)
         print ("####################################")
         print("show up")
+        self.travel = AddTraveViewModels.myItems
+        print("S120",self.travel)
         
         return cell!
 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "joinPageView")
-           vc.modalPresentationStyle = .overFullScreen
-        self.navigationController?.pushViewController(vc, animated: true)
+        performSegue(withIdentifier: "joinPage", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? JoinPageViewController {
+            destination.travelItem = travel[(tableViewItem.indexPathForSelectedRow?.row)!]
+            print("135",travel.count)
+            
+        }
     }
 }

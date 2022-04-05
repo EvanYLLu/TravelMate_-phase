@@ -15,10 +15,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var passwd: UITextField!
     
-    func Login_for_10() {
+    func Login_for_10() -> String {
         let email: String = "123@123.com"
         let passwd: String = "123456"
 
+        SignInViewController.user_email = email
         //let error = validateFiled()
      Auth.auth().signIn(withEmail: email, password: passwd) {authResult, error in
          if error != nil{
@@ -50,9 +51,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
              let vc = storyboard.instantiateViewController(withIdentifier: "index")
                 vc.modalPresentationStyle = .overFullScreen
              self.navigationController?.pushViewController(vc, animated: true)
+             GetHobbies.gethobbies()
              
          }//else
+         
      }//func
+        
+        return SignInViewController.user_email
     }
     
     /*
@@ -222,6 +227,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
              let vc = storyboard.instantiateViewController(withIdentifier: "index")
                 vc.modalPresentationStyle = .overFullScreen
              self.navigationController?.pushViewController(vc, animated: true)
+             GetHobbies.gethobbies()
              
          }
    

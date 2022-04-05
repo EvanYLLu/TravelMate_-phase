@@ -29,6 +29,7 @@ class SignInViewController: UIViewController//, FUIAuthDelegate
 
 
         } else {
+            
             //
             GIDSignIn.sharedInstance().signIn()
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

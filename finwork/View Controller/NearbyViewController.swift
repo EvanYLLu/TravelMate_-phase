@@ -26,41 +26,15 @@ class NearbyViewController: UIViewController, GMSMapViewDelegate, CLLocationMana
     
     //輸入欄
     
-    @IBOutlet weak var name_place: UITextField!
-    @IBOutlet weak var type_place: UITextField!
-    @IBOutlet weak var open_time: UITextField!
-    @IBOutlet weak var close_time: UITextField!
-    @IBOutlet weak var rest_time: UITextField!
-    @IBOutlet weak var telephone_num: UITextField!
-    @IBOutlet weak var Introduction: UITextView!
-    
-    
-    
     
     //let latitude = (location?.coordinate.latitude)!
                 //let longitude = (location?.coordinate.longitude)!
     let manager = CLLocationManager()
     
-    @IBAction func send(_ sender: Any) {
-        addHint()
-        addPlaceView.isHidden = true
-        addPlaceDetail.isHidden = true
-        addPlace.isHidden = false
-        getLocation.isHidden = false
-        
-    }
-    @IBAction func nextPage(_ sender: Any) {
-        addPlaceView.isHidden = true
-        addPlaceDetail.isHidden = false
-        
-    }
+    
     
     @IBAction func addPlace(_ sender: Any) {
-        addPlace.isHidden = true
-        getLocation.isHidden = true
-        addPlaceView.isHidden = false
-        
-        
+       
         
         //minMapview()
     }
@@ -92,18 +66,7 @@ class NearbyViewController: UIViewController, GMSMapViewDelegate, CLLocationMana
         )
     }
     
-    @IBAction func close_1(_ sender: Any) {
-        addPlace.isHidden = false
-        getLocation.isHidden = false
-        addPlaceView.isHidden = true
-    }
     
-    @IBAction func close_2(_ sender: Any) {
-        addPlace.isHidden = false
-        getLocation.isHidden = false
-        addPlaceView.isHidden = true
-        addPlaceDetail.isHidden = true
-    }
     
     func minMapview() {    //地圖的部分
         
@@ -136,8 +99,7 @@ class NearbyViewController: UIViewController, GMSMapViewDelegate, CLLocationMana
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPlaceView.isHidden = true
-        addPlaceDetail.isHidden = true
+        
         mapview()
         
         //mapView.clear()
