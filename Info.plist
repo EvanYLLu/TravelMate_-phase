@@ -59,6 +59,14 @@
 				<string>com.googleusercontent.apps.978340723728-2142ihi1pm6cd465p9b3rpi2iiu6fep6</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb509149590613387</string>
+			</array>
+		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -78,14 +86,14 @@
 	<string>1310</string>
 	<key>DTXcodeBuild</key>
 	<string>13A1030d</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
 	<key>MinimumOSVersion</key>
 	<string>14.5</string>
 	<key>NSCameraUsageDescription</key>
 	<string>APP需要使用您的相機</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>APP需要取用您的相簿</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>您的照片將被用於個人資料相關頁面</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

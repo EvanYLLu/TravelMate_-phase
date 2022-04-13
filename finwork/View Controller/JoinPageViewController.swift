@@ -91,7 +91,7 @@ class JoinPageViewController: UIViewController {
     
     
     
-    
+    //參團提示框
     func confirm() {
         // 建立一個提示框
         let alertController = UIAlertController(
@@ -379,6 +379,11 @@ class JoinPageViewController: UIViewController {
                                                   self.user_name.text = document.data()[ "user_nikename"] as! String
                                                   let photo: StorageReference = storageRef.child(document.data()[ "user_imagetext"] as! String)
                                                   self.user_image.sd_setImage(with: photo)
+                                                  if ( document.data()[ "user_gender"] as! String == "男") {
+                                                      self.user_gender.image = UIImage(named: "男生")
+                                                  } else if ( document.data()[ "user_gender"] as! String == "女") {
+                                                      self.user_gender.image = UIImage(named: "愛心後")
+                                                  }
                                                                                          
                                                   
                                                       print("JP65")

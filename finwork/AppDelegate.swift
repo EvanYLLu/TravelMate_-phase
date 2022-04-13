@@ -11,37 +11,64 @@ import Firebase
 import FirebaseFirestore
 import FirebaseCore
 import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
 
-@main
-
+//@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
-
+func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+) -> Bool {
+    FBSDKCoreKit.ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
     
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        Thread.sleep(forTimeInterval: 0.02)
-       GMSServices.provideAPIKey("AIzaSyCnxEsviVbzh1zF9MHUFoKZODZjUAyKOak")
-        
-        FirebaseApp.configure()
-        GIDSignIn.sharedInstance()?.clientID = "978340723728-2142ihi1pm6cd465p9b3rpi2iiu6fep6.apps.googleusercontent.com"
-        GIDSignIn.sharedInstance()?.delegate = self
-               
-        
-        return true
-    }
+    Thread.sleep(forTimeInterval: 0.02)
+   GMSServices.provideAPIKey("AIzaSyCnxEsviVbzh1zF9MHUFoKZODZjUAyKOak")
+    FBSDKCoreKit.Settings.appID = "509149590613387"
+    FirebaseApp.configure()
+    GIDSignIn.sharedInstance()?.clientID = "978340723728-2142ihi1pm6cd465p9b3rpi2iiu6fep6.apps.googleusercontent.com"
+    GIDSignIn.sharedInstance()?.delegate = self
+    return true
+}
+      /*
+func application(
+    _ app: UIApplication,
+    open url: URL,
+    options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+) -> Bool {
+    ApplicationDelegate.shared.application(
+        app,
+        open: url,
+        sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+        annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+    )
+    return GIDSignIn.sharedInstance()!.handle(url)
+}*/
+    func application(_ app: UIApplication,
+                         open url: URL,
+                         options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+            return ApplicationDelegate.shared.application(app, open: url, options: options)
+        }
     
-    @available(iOS 9.0, *)
-    func application(_ application: UIApplication, open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey: Any])
-      -> Bool {
-          return GIDSignIn.sharedInstance()!.handle(url)
-    }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         print("Your email is \(user.profile.email ?? "No email")")
-        SignInViewController.user_email = user.profile.email
-        SignInViewController.chack_login()
+        
+        SignInViewController.user_login(email: user.profile.email)
+        
+        //SignInViewController.user_email = user.profile.email
+        //SignInViewController.chack_login()
+        guard let authentication = user.authentication else { return }
+            let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                           accessToken: authentication.accessToken)
+            Auth.auth().signIn(with: credential) { (User, Error) in
+                if let error = error {
+                    print(Error)
+                    return
+                }
+            }
     }
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
@@ -62,7 +89,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
 }
-
-

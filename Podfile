@@ -8,7 +8,7 @@ target 'finwork' do
   # Pods for finwork
 
     pod 'GoogleMaps'
-
+    pod 'FBSDKLoginKit'
     pod 'SwiftyStarRatingView'
 
     pod 'Firebase/Analytics'

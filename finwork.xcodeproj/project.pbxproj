@@ -47,6 +47,7 @@
 		B840287F27BD4E170068FC42 /* HobbieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B840287D27BD4E170068FC42 /* HobbieCollectionViewCell.swift */; };
 		B840288027BD4E170068FC42 /* HobbieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B840287E27BD4E170068FC42 /* HobbieCollectionViewCell.xib */; };
 		B87771902796720900252FBF /* AddUserDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B877718F2796720900252FBF /* AddUserDataViewController.swift */; };
+		B890D82827D9027900FC6A2C /* EditUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890D82727D9027900FC6A2C /* EditUserViewController.swift */; };
 		B8A3546F27B8143C0017A617 /* AddLicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A3546E27B8143B0017A617 /* AddLicenseViewController.swift */; };
 		B8A3547127B89C800017A617 /* AddHobbiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A3547027B89C800017A617 /* AddHobbiesViewController.swift */; };
 		B8A3547327B955840017A617 /* IntroduceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8A3547227B955840017A617 /* IntroduceViewController.swift */; };
@@ -68,6 +69,7 @@
 		B8E835D32773770A00486E0A /* TravelItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E835D22773770A00486E0A /* TravelItem.swift */; };
 		B8E835D527737A4400486E0A /* TravelDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E835D427737A4400486E0A /* TravelDB.swift */; };
 		B8E835D72773995600486E0A /* FirestoreDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E835D62773995600486E0A /* FirestoreDatabase.swift */; };
+		B8E9F40B27E70F3C005E705F /* AddLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8E9F40A27E70F3C005E705F /* AddLocationTableViewController.swift */; };
 		B8F928E8275C27D60045972A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 207EF80726A69192007F208F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +143,7 @@
 		B840287D27BD4E170068FC42 /* HobbieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HobbieCollectionViewCell.swift; sourceTree = "<group>"; };
 		B840287E27BD4E170068FC42 /* HobbieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HobbieCollectionViewCell.xib; sourceTree = "<group>"; };
 		B877718F2796720900252FBF /* AddUserDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserDataViewController.swift; sourceTree = "<group>"; };
+		B890D82727D9027900FC6A2C /* EditUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserViewController.swift; sourceTree = "<group>"; };
 		B89E669727B24F81004DD3E2 /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8A3546E27B8143B0017A617 /* AddLicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLicenseViewController.swift; sourceTree = "<group>"; };
 		B8A3547027B89C800017A617 /* AddHobbiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHobbiesViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +166,7 @@
 		B8E835D22773770A00486E0A /* TravelItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelItem.swift; sourceTree = "<group>"; };
 		B8E835D427737A4400486E0A /* TravelDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelDB.swift; sourceTree = "<group>"; };
 		B8E835D62773995600486E0A /* FirestoreDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreDatabase.swift; sourceTree = "<group>"; };
+		B8E9F40A27E70F3C005E705F /* AddLocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationTableViewController.swift; sourceTree = "<group>"; };
 		B8F928E6275C01DA0045972A /* finwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -240,6 +244,8 @@
 				B8A3547027B89C800017A617 /* AddHobbiesViewController.swift */,
 				B8A3547227B955840017A617 /* IntroduceViewController.swift */,
 				B840287D27BD4E170068FC42 /* HobbieCollectionViewCell.swift */,
+				B890D82727D9027900FC6A2C /* EditUserViewController.swift */,
+				B8E9F40A27E70F3C005E705F /* AddLocationTableViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -643,6 +649,7 @@
 				B8A3547127B89C800017A617 /* AddHobbiesViewController.swift in Sources */,
 				B8E835D72773995600486E0A /* FirestoreDatabase.swift in Sources */,
 				B8D52775276E43CC00DC90C2 /* TraveListViewModels.swift in Sources */,
+				B8E9F40B27E70F3C005E705F /* AddLocationTableViewController.swift in Sources */,
 				207EF80B26A6F930007F208F /* SignInViewController.swift in Sources */,
 				20CA3FF22697656D00E716FA /* ClockInViewController.swift in Sources */,
 				B8E835D527737A4400486E0A /* TravelDB.swift in Sources */,
@@ -672,6 +679,7 @@
 				208D432626C164580069379E /* MessageViewController.swift in Sources */,
 				B8A3546F27B8143C0017A617 /* AddLicenseViewController.swift in Sources */,
 				B87771902796720900252FBF /* AddUserDataViewController.swift in Sources */,
+				B890D82827D9027900FC6A2C /* EditUserViewController.swift in Sources */,
 				20CE8D05267F010F001DC2CD /* machpagViewController.swift in Sources */,
 				209284B226C0329600E602C3 /* UserFileViewController.swift in Sources */,
 				20CE8D0B26901324001DC2CD /* CardView.swift in Sources */,

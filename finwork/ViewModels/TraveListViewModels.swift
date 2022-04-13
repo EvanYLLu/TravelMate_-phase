@@ -93,6 +93,17 @@ struct user_action: Codable {
     let place_id: [String]?//新增地點
     
 }
+
+//行程資料
+struct travel_action: Codable {
+    let travel_id: String?
+    let partner: [String]?
+    let main_keeper: String?
+    let finish_time: Date?
+    let place_id: [String]?//新增地點
+    
+}
+
 struct get_hobbies: Codable {
     let type_image: String
     let type_name: String

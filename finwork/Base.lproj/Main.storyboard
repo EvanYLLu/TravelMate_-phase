@@ -2315,7 +2315,7 @@
                                     <action selector="loginButton:" destination="8yz-b2-oFV" eventType="touchUpInside" id="PUB-Lz-Jfk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDa-zW-gxi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDa-zW-gxi" customClass="FBSDKLoginButton">
                                 <rect key="frame" x="167" y="281" width="80" height="80"/>
                                 <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
@@ -2328,8 +2328,8 @@
                                     <action selector="facebookSignIn:" destination="8yz-b2-oFV" eventType="touchUpInside" id="qvx-Gg-6Hq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="註冊" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNw-CQ-sVO">
-                                <rect key="frame" x="140" y="176" width="134" height="53"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="註冊/登入" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mNw-CQ-sVO">
+                                <rect key="frame" x="80" y="176" width="254" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                 <color key="textColor" name="旅蚯橙"/>
                                 <nil key="highlightedColor"/>
@@ -2378,7 +2378,7 @@
                             <constraint firstItem="BgI-hR-Cz6" firstAttribute="trailing" secondItem="jOg-4C-xwf" secondAttribute="trailing" constant="133" id="W4w-aQ-vg5"/>
                             <constraint firstItem="BgI-hR-Cz6" firstAttribute="trailing" secondItem="83T-yn-KTy" secondAttribute="trailing" constant="127" id="WZ5-qS-c7k"/>
                             <constraint firstItem="sqQ-Md-qDg" firstAttribute="centerX" secondItem="A6z-V8-Gny" secondAttribute="centerX" id="YSM-cc-rd8"/>
-                            <constraint firstItem="BgI-hR-Cz6" firstAttribute="trailing" secondItem="mNw-CQ-sVO" secondAttribute="trailing" constant="140" id="ab4-yL-80c"/>
+                            <constraint firstItem="BgI-hR-Cz6" firstAttribute="trailing" secondItem="mNw-CQ-sVO" secondAttribute="trailing" constant="80" id="ab4-yL-80c"/>
                             <constraint firstItem="ipc-kC-rQu" firstAttribute="top" secondItem="UDa-zW-gxi" secondAttribute="bottom" constant="15" id="b20-hm-f2X"/>
                             <constraint firstItem="sqQ-Md-qDg" firstAttribute="top" secondItem="83T-yn-KTy" secondAttribute="bottom" constant="45" id="e6w-wq-ddB"/>
                             <constraint firstItem="83T-yn-KTy" firstAttribute="top" secondItem="gkV-n4-wbo" secondAttribute="bottom" constant="15" id="e73-Vv-hAC"/>
@@ -2393,11 +2393,14 @@
                             <constraint firstItem="gkV-n4-wbo" firstAttribute="height" secondItem="UDa-zW-gxi" secondAttribute="height" id="vgf-7v-wvg"/>
                             <constraint firstItem="jOg-4C-xwf" firstAttribute="leading" secondItem="BgI-hR-Cz6" secondAttribute="leading" constant="133" id="vyy-gJ-H7J"/>
                             <constraint firstItem="jOg-4C-xwf" firstAttribute="centerX" secondItem="A6z-V8-Gny" secondAttribute="centerX" id="x0c-M0-eyb"/>
-                            <constraint firstItem="mNw-CQ-sVO" firstAttribute="leading" secondItem="BgI-hR-Cz6" secondAttribute="leading" constant="140" id="xhG-SS-Mwh"/>
+                            <constraint firstItem="mNw-CQ-sVO" firstAttribute="leading" secondItem="BgI-hR-Cz6" secondAttribute="leading" constant="80" id="xhG-SS-Mwh"/>
                             <constraint firstItem="BgI-hR-Cz6" firstAttribute="bottom" secondItem="jOg-4C-xwf" secondAttribute="bottom" constant="143" id="zGF-rm-T1H"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="8qH-An-Qty"/>
+                    <connections>
+                        <outlet property="facebook_login" destination="UDa-zW-gxi" id="A2C-6g-s4B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MaW-lG-0tw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="KWN-iV-Wkp" userLabel="Exit" sceneMemberID="exit"/>
